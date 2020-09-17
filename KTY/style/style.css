@@ -1,9 +1,15 @@
-html{
-}
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: black;
 }
 
 #wrap{
@@ -18,7 +24,7 @@ html{
   padding: 0 20px;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(244,244,244);
+  background-color: rgb(255,255,255);
 }
 
 .menuBtn{
@@ -39,9 +45,106 @@ html{
 }
 
 .searchBtn{
-  background: url(../images/searchLogo.png) no-repeat;
+  background: url(../images/searchIcon.png) no-repeat;
   width: 30px;
   height: 30px;
   background-size: cover; 
   cursor: pointer;
 }
+.menuSlideBg{
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-in-out;
+}
+.menuSlide{
+  display: none;
+  flex-flow: column;
+  position: fixed;
+  max-width:335px;
+  width: 100%; 
+  height: 100vh;
+  background-color: rgb(244,244,244);
+  transition: 0.45s ease-in-out;
+
+}
+
+.menuCloseBtn{
+  margin-left: auto;
+  background: url(../images/closeIcon.png) no-repeat;
+  background-size: cover; 
+  width: 45px;
+  height: 45px;
+  margin: 10px 10px 0 auto;
+  cursor: pointer;
+}
+
+.menuLoginWrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0 35px;
+}
+
+.menuLoginText{
+  display: flex;
+  height: 50px;
+  margin-left: 15px;
+  flex-flow: column;
+  justify-content: space-between; 
+}
+.menuLoginText>div{
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: #a5a5a5;
+  margin: 10px 20px 0 0;
+}
+.login{
+  cursor: pointer;
+}
+.signUp{
+  cursor: pointer;
+}
+
+.mobieLogo{
+  width: 60px;
+  height: 60px;
+  margin: 5px 20px;
+  background-color: darkkhaki; 
+  border-radius: 50%; 
+  color: white;
+  text-align: center;
+  line-height: 58px;
+  font-weight: bold;
+}
+
+.menuList{
+  background-color: #eee;
+  height: calc(100vh - 140px);
+}
+
+.menuList li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  font-size:1rem;
+  margin: 10px 20px 10px 25px;
+}
+
+.directionIcon{
+  display: inline-block;
+  background: url(../images/directionIcon.webp) no-repeat;
+  background-size: cover; 
+  width: 25px;
+  height: 25px;
+
+}
+/* .menuHome{
+  display: flex;
+  justify-content: space-between;
+
+} */

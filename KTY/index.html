@@ -5,24 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mobie</title>
     <link rel="stylesheet" href="./style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="wrap">
         <header id="header">
             <div class="menuBtn">
-                <div class="btn1"></div>
-                <div class="btn2"></div>
-                <div class="btn3"></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
             <div class="logo">
                 <span>Mobie</span>
             </div>
             <div class="searchBtn"></div>
         </header>
+        <div class="menuSlideBg"></div>
+        <div class="menuSlide">
+            <div class="menuCloseBtn"></div>
+            <div class="menuLoginWrap">
+                <div class="menuLoginText">
+                    <h3>로그인 해주세요</h3>
+                    <div>
+                        <span class="login">로그인 ></span>
+                        <span class="signUp">회원가입 ></span>
+                    </div>
+                </div>
+                <div class="mobieLogo">Mobie</div>
+            </div>
+            <ul class="menuList">
+                
+                <a href="#">
+                    <li class="menuHome">
+                        <span>홈</span>
+                        <span class="directionIcon"></span>
+                    </li>
+                </a>        
+                <a href="#">
+                    <li class="menuMvRes">
+                        <span>영화 예매</span>
+                        <span class="directionIcon"></span>
+                    </li>
+                </a>        
+                <a href="#">
+                    <li class="menuLikedMv">
+                        <span>좋아요 표시한 동영상</span>
+                        <span class="directionIcon"></span>
+                    </li>
+                </a>        
+                <a href="#">
+                    <li class="menuMyRes">
+                        <span>예매 내역</span>
+                        <span class="directionIcon"></span>
+                    </li>
+                </a>
+            </ul>
+        </div>
         <div id="contents">
             
         </div>
         <footer id="footer"></footer>
     </div>
+    <script src="./js/main.js"></script>
 </body>
 </html>
