@@ -41,7 +41,7 @@ a{
 
 .logo{
   font-size: 1.8rem;
-  cursor: pointer;
+  font-weight: bold;
 }
 
 .searchBtn{
@@ -51,18 +51,19 @@ a{
   background-size: cover; 
   cursor: pointer;
 }
-.menuSlideBg{
-  display: none;
+.slideBg{
+  visibility: hidden;
   position: fixed;
+  opacity: 0;
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   transition: 0.3s ease-in-out;
-}
+} 
 .menuSlide{
-  display: none;
   flex-flow: column;
   position: fixed;
+  transform: translateX(-100%);
   max-width:335px;
   width: 100%; 
   height: 100vh;
@@ -70,6 +71,7 @@ a{
   transition: 0.45s ease-in-out;
 
 }
+
 
 .menuCloseBtn{
   margin-left: auto;
@@ -109,7 +111,7 @@ a{
   cursor: pointer;
 }
 
-.mobieLogo{
+.mobieCircle{
   width: 60px;
   height: 60px;
   margin: 5px 20px;
@@ -143,8 +145,95 @@ a{
   height: 25px;
 
 }
-/* .menuHome{
-  display: flex;
-  justify-content: space-between;
 
-} */
+.searchSlide{
+  flex-flow: column;
+  position: fixed;
+  transform: translateX(100%);
+  right: 0;
+  max-width: 600px;
+  width: 80%; 
+  height: 100vh;
+  background-color: #eee;
+  transition: 0.5s ease-in-out;
+
+}
+
+.searchWrap{
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background-color: rgb(244,244,244);
+
+}
+
+.searchCloseBtn{
+  display: inline-block;
+  height: 40px;
+  padding-right: 10px;
+
+}
+
+.searchCloseBtn .directionIcon{
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+.searchBox{
+  width: calc(100% - 50px);
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+
+}
+.searchInput{
+  border-radius: 20px;  
+  height: 32px;
+  width: 100%;
+  border:2px solid rgb(118, 118, 118);
+  background: url(../images/searchInputIcon.png) no-repeat 8px 4px;
+  background-size: 20px 20px;
+  padding: 0 10px 0 40px;
+}
+
+.searchInput:focus{
+  outline:none;
+}
+
+.mobieNotice{
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+.footerWrap{
+  padding-left: 10px;
+}
+.mobieLogo{
+  height: 60px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+}
+
+.mobieLogo div{
+  width: 20px;
+  height: 20px;
+  background: url(../images/logo.png) no-repeat;
+  background-size: contain;
+
+}
+
+.mobieLogo h3{
+  margin-left: 3px;
+}
+.mobieInfo address{
+  font-style: normal;
+  font-size: 0.8rem;
+  padding: 2px;
+}
+.mobieInfo span{
+  display: block;
+  font-size: 0.8rem;
+  padding: 2px;
+}
