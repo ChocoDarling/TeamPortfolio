@@ -35,6 +35,24 @@
 
 })();
 
+(function loginFunction() {
+  const login = document.querySelector('.login');
+  const loginPop = document.querySelector('.loginPop');
+  const loginBg = document.querySelector('.loginBg');
+
+  function createLoginPop() {
+    loginPop.style.display = 'block';
+    loginBg.style.display = 'block';
+  }
+  function removeLoginPop(){
+    loginPop.style.display = 'none';
+    loginBg.style.display = 'none';
+  }
+
+  login.addEventListener('click',()=>createLoginPop());
+  loginBg.addEventListener('click',()=>removeLoginPop());
+})();
+
 let movieGroup = [
   {
     name: 'a',
