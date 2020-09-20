@@ -1,0 +1,51 @@
+.mvSectionWrap{
+  padding: 20px 10px 60px;
+}
+
+.mvSection{
+  padding: 20px 0 0;
+}
+
+.mvSection h4{
+  margin-bottom: 10px;
+}
+
+.mvListSmall{
+  display: flex;
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.mvListSmall::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+.mvListSmall>li{
+  width: 104px;
+  margin-right: 5px;
+  background-color: #eee;
+}
+
+.mvListSmall>li:last-child{
+  margin-right: 0;
+}
+
+.mvListSmall>li>img{
+  width: 104px;
+  height: 152px;
+}
+
+.mvSmallListTitle{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space:nowrap;
+  height: 40px;
+  line-height: 35px;
+  padding: 0 10px;
+}
+
+.mobieNotice{
+  text-align: center;
+  font-size: 0.7rem;
+}

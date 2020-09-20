@@ -133,7 +133,3 @@ function createMvListFunction(sectionName,movie){
   // }
 
 }
-document.body.innerHTML
-createMvListFunction('최신개봉작');
-
-
