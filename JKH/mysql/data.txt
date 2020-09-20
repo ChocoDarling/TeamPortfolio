@@ -1,0 +1,10 @@
+user
+{
+id
+pw
+name
+phoneNum
+resInfo (영화예매내역)
+likeMv (좋아요한 영화)
+}
+

@@ -1,0 +1,99 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화정보</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./js_1.js"></script>
+</head>
+<body>
+    <div>
+        <div id="allMenu">
+            <button id="dataRecall" onclick="callData()">영화정보불러오기</button>
+            <button id="dataInit" onclick="displayDiv('dataInitDiv')">영화정보넣기(덮어쓰기)</button>
+            <button id="dataDelete" onclick="displayDiv('dataDeleteDiv')">영화정보삭제</button>
+        </div>
+        <div id="dataInitDiv" class="inputDivs">
+            <ul>
+                <li><label>키값 : </label>
+                    <input type="number" name="" id="data_keyInput" placeholder="키값">
+                </li>
+                <li>
+                    <label>영화제목 : </label>
+                    <input type="text" name="" id="dataMvTitleInput" placeholder="영화제목">
+                </li>
+                <li>
+                    <label>영화포스터 : </label>
+                    <input type="text" name="" id="dataMvPosterInput" placeholder="영화포스터">
+                </li>
+                <li>
+                    <label>영화정보 : </label>
+                    <input type="text" name="" id="dataMvInfoInput" placeholder="영화정보">
+                </li>
+                <li>
+                    <label>영화스토리 : </label>
+                    <input type="text" name="" id="dataMvStoryInput" placeholder="영화스토리">
+                </li>
+                <li>
+                    <label>영화배우 : </label>
+                    <input type="text" name="" id="dataMvActorInput" placeholder="영화배우">
+                </li>
+                <li>
+                    <label>개봉일 : </label>
+                    <input type="number" name="" id="dataopeningDateInput" placeholder="개봉일 ex)20200920">
+                </li>
+                <li>
+                    <label>장르 : </label>
+                    <input type="text" name="" id="dataMvGenreInput" placeholder="장르">
+                </li>
+                <li>
+                    <label>예고편 : </label>
+                    <input type="text" name="" id="dataMvVideoInput" placeholder="예고편">
+                </li>
+                <li>
+                    <label>예매율 : </label>
+                    <input type="text" name="" id="dataReservationRateInput" placeholder="예매율">
+                </li>
+                <li>
+                    <label>평점 : </label>
+                    <input type="text" name="" id="dataMvGradeInput" placeholder="평점">
+                </li>
+                <li>
+                    <label>스틸컷 : </label>
+                    <input type="text" name="" id="dataSteelCutInput" placeholder="스틸컷">
+                </li>
+                <li>
+                    <label>댓글 : </label>
+                    <input type="text" name="" id="dataMvCommentInput" placeholder="댓글">
+                </li>
+            </ul>
+            <button id="mvDelete" onclick="initMvDB()">입력</button>
+        </div>
+        <div id="dataDeleteDiv" class="inputDivs">
+            <div>
+                <p>삭제할 타이틀</p>
+                <input type="text" name="" id="dataDeleteInput" placeholder="삭제할 타이틀">
+            </div>
+            <button id="mvDelete" onclick="">삭제</button>
+        </div>
+        <p>결과 : </p><span id="result"></span>
+    </div>
+    <!-- <div id="tableDiv"> -->
+        <table id="mvTable">
+            <th>키값<br>(_key)</th>
+            <th>영화제목<br>(mvTitle)</th>
+            <th>장르<br>(mvGenre)</th>
+            <th>영화정보<br>(mvInfo)</th>
+            <th>영화포스터<br>(mvPoster)</th>
+            <th>영화스토리<br>(mvStory)</th>
+            <th>영화배우<br>(mvActor)</th>
+            <th>개봉일<br>(openingDate)</th>
+            <th>예고편<br>(mvVideo)</th>
+            <th>예매율<br>(reservationRate)</th>
+            <th>평점<br>(mvGrade)</th>
+            <th>스틸컷<br>(steelCut)</th>
+            <th>댓글<br>(mvComment)</th>
+        </table>
+    <!-- </div> -->
+</body>
+</html>

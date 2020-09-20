@@ -1,0 +1,59 @@
+table {
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+td div {
+    height: 200px;
+    overflow-y: auto;
+}
+
+div {
+    float: left;
+    width: 100%;
+}
+
+#tableDiv {
+    width: 100%;
+    overflow-x: auto;
+}
+
+button {
+    float: left;
+    width: 200px;
+    height: 30px;
+    margin: 10px;
+}
+
+#allMenu {
+    border: 1px solid black;
+}
+
+.inputDivs {
+    display: none;
+    border: 1px solid black;
+}
+
+li {
+    margin: 10px;
+}
+
+li label {
+    width: 100px;
+    text-align: left; 
+    padding-right: 10px; 
+    float: left;
+}
+
+input {
+    width: 500px;
+}
+
+#dataDeleteInput {
+    margin-left: 10px;
+}
