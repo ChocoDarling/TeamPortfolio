@@ -5,6 +5,8 @@
   $column = '*';
   $where = "";
   $findData = "";
+  $table = "MovieData";
+
   if ($request->columns) {
     $column = $request->columns;
   }
@@ -13,6 +15,9 @@
     if ($request->findData) {
       $findData = " LIKE '%".$request->findData."%'";
     }
+  }
+  if ($request->table) {
+    $table = $request->table;
   }
 
   $servername = "localhost";
@@ -37,21 +42,7 @@
   if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-      $arrMv[] = array(
-        "_key" => (int)$row["_key"],
-        "mvPoster" => $row["mvPoster"],
-        "mvInfo" => $row["mvInfo"],
-        "mvStory" => $row["mvStory"],
-        "mvActor" => $row["mvActor"],
-        "openingDate" => $row["openingDate"],
-        "mvGenre" => $row["mvGenre"],
-        "mvVideo" => $row["mvVideo"],
-        "mvTitle" => $row["mvTitle"],
-        "reservationRate" => $row["reservationRate"],
-        "mvGrade" => $row["mvGrade"],
-        "steelCut" => $row["steelCut"],
-        "mvComment" => $row["mvComment"]
-      );
+      $arrMv[] = $row;
     }
     echo json_encode($arrMv);
   } else {

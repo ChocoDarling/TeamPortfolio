@@ -1,0 +1,16 @@
+div {
+    text-align: center;
+}
+
+#chairs {
+    margin: auto;
+    padding: 10px;
+}
+
+.chairs {
+    width: 30px;
+    height: 30px;
+    color: white;
+    margin: 2px;
+    text-decoration: none;
+}
