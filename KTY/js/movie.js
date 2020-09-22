@@ -34,9 +34,7 @@ let movie = [
 function hashCheck() {
   if(location.hash){
     const hash = location.hash.substring(1)
-    console.log(hash);
     const mvIndex = movie.findIndex(x=>x._id===hash)
-    console.log(mvIndex);
     const player = document.querySelector('.player');
     const mvTitle = document.querySelector('.mvTitle');
     const mvGrade = document.querySelector('.mvGrade');
@@ -50,13 +48,12 @@ function hashCheck() {
     mvGrade.innerHTML = `평점 ${movie[mvIndex].grade} /`;
     mvGenre.innerHTML = `${movie[mvIndex].genre} /`;
     mvTime.innerHTML = `${movie[mvIndex].time}분 /`;
-    mvRate.innerHTML = `${movie[mvIndex].rate}세 /`;
+    mvRate.innerHTML = `${movie[mvIndex].rate}세`;
   }
 
-    //없으면 첫번째 탭 버튼 활성화
   else{
     console.log(1);
   }
+  
 };
-
-hashCheck();
+window.onhashchange = hashCheck

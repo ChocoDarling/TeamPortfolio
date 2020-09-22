@@ -21,17 +21,17 @@
   display: none;  /* Chrome, Safari and Opera */
 }
 
-.mvListSmall>li{
+.mvListSmall li{
   width: 104px;
   margin-right: 5px;
-  background-color: #eee;
+  background-color: rgb(244,244,244);
 }
 
-.mvListSmall>li:last-child{
+.mvListSmall a:last-child li{
   margin-right: 0;
 }
 
-.mvListSmall>li>img{
+.mvListSmall li img{
   width: 104px;
   height: 152px;
 }
