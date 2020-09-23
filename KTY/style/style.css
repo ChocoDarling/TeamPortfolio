@@ -101,12 +101,16 @@ a{
 .menuLoginText{
   display: flex;
   height: 50px;
-  margin-left: 15px;
+  margin-left: 25px;
   flex-flow: column;
   justify-content: space-between; 
 }
-
+.menuLoginText>h3{
+  padding-top: 3px;
+}
 .menuLoginText>h2{
+  padding-top: 3px;
+  font-size: 1.3rem;
   color: #a0a0a0;
   margin: auto 0;
 }
@@ -116,14 +120,14 @@ a{
   justify-content: space-between;
   font-size: 0.7rem;
   color: #a5a5a5;
-  margin: 10px 20px 0 0;
+  margin: 2px 2px 0 0;
 }
 .menuLoginText>div>span{
   cursor: pointer;
   
 }
 .logout{
-  cursor: pointer;
+  display: none;
   margin-left: auto;
 }
 
