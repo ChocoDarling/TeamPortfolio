@@ -106,6 +106,11 @@ a{
   justify-content: space-between; 
 }
 
+.menuLoginText>h2{
+  color: #a0a0a0;
+  margin: auto 0;
+}
+
 .menuLoginText>div{
   display: flex;
   justify-content: space-between;
@@ -113,13 +118,13 @@ a{
   color: #a5a5a5;
   margin: 10px 20px 0 0;
 }
-
-.login{
+.menuLoginText>div>span{
   cursor: pointer;
+  
 }
-
-.signUp{
+.logout{
   cursor: pointer;
+  margin-left: auto;
 }
 
 .mobieCircle{

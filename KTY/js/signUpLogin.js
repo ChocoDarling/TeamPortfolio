@@ -11,7 +11,7 @@
   const userId = document.getElementById('userId');
   const userPw = document.getElementById('userPw');
   const loginSubmit = document.querySelector('.loginSubmit');
-
+  const logout = document.querySelector('.logout');
 
 
   let idPass = false;
@@ -152,11 +152,18 @@
       noticeFunction(userPw,'잘못된 비밀번호입니다.');
     }
     else{
-      document.cookie = `user=${userId.value}; path=/; max-age=1800; domain=rudekrudgns.cafe24.com`;
-      removeLoginPop();
+      document.cookie = `userId=${userId.value}; path=/; max-age=1800; domain=rudekrudgns.cafe24.com`;
+      location.reload();
     }
+  }
+
+  function logoutFunction() {
+    document.cookie = `userId=; path=/; max-age=-1; domain=rudekrudgns.cafe24.com`;
+    location.reload();
+    
   }
 
   signUpSubmit.addEventListener('click', ()=>initID());
   loginSubmit.addEventListener('click', ()=>loginCheckFunction());
+  logout.addEventListener('click',()=>logoutFunction());
 })();
