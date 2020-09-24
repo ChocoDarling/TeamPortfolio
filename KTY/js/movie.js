@@ -1,4 +1,12 @@
-let movie = [
+
+const iframe = document.querySelector('.playerWrap iframe');
+  iframe.height = `${+iframe.offsetWidth * 1080 / 1920}`;
+
+function iframeHeight(){
+  iframe.height = `${+iframe.offsetWidth * 1080 / 1920}`;
+}
+
+let movie1 = [
   {
     _id : 'mulan',
     title : '뮬란',
@@ -32,9 +40,11 @@ let movie = [
 ]
 
 function hashCheck() {
+  const hash = location.hash.substring(1)
+  const movie = getDB(TABLE.MOVIEINFO);
+
   if(location.hash){
-    const hash = location.hash.substring(1)
-    const mvIndex = movie.findIndex(x=>x._id===hash)
+    const mvIndex = movie.findIndex(x=>x.id===hash)
     const player = document.querySelector('.player');
     const mvTitle = document.querySelector('.mvTitle');
     const mvGrade = document.querySelector('.mvGrade');
@@ -56,4 +66,5 @@ function hashCheck() {
   }
   
 };
+hashCheck();
 window.onhashchange = hashCheck

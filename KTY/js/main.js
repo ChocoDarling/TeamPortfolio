@@ -102,3 +102,4 @@
   signUpBg.addEventListener('click',()=>removeSignUpPop());
 
 })();
+

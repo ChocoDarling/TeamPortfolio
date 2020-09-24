@@ -1,9 +1,11 @@
 .playerWrap{
   background-color: black;
 }
-
-.player{
+.playerWrap iframe{
   width: 100%;
+  
+}
+.player{
   background-color: #333;
 }
 

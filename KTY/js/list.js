@@ -1,99 +1,64 @@
+function createMvListFunction(sectionName,movie){
+  const mvSectionWrap = document.querySelector('.mvSectionWrap');
+  const section = document.createElement('section');
+  section.className = 'mvSection';
 
-let movieGroup = [
-    {
-      name: 'a',
-      img : './images/movie_image.jpg',
-      date: 20190201,
-    },
-    {
-      name: 'b',
-      img : './images/movie_image.jpg',
-      date: 20190202,
-    },
-    {
-      name: 'c',
-      img : './images/movie_image.jpg',
-      date: 20190203,
-    },
-    {
-      name: 'd',
-      img : './images/movie_image.jpg',
-      date: 20190204,
-    },
-    {
-      name: 'e',
-      img : './images/movie_image.jpg',
-      date: 20190205,
-    },
-    {
-      name: 'f',
-      img : './images/movie_image.jpg',
-      date: 20190206,
-    },
-    {
-      name: 'g',
-      img : './images/movie_image.jpg',
-      date: 20190207,
-    },
-    {
-      name: 'h',
-      img : './images/movie_image.jpg',
-      date: 20190208,
-    },
-    {
-      name: 'i',
-      img : './images/movie_image.jpg',
-      date: 20190209,
-    },
-    {
-      name: 'j',
-      img : './images/movie_image.jpg',
-      date: 20190210,
-    },
-    {
-      name: 'k',
-      img : './images/movie_image.jpg',
-      date: 20190211,
-    },
-    {
-      name: 'l',
-      img : './images/movie_image.jpg',
-      date: 20190212,
-    },
-    {
-      name: 'm',
-      img : './images/movie_image.jpg',
-      date: 20190213,
-    },
-    {
-      name: 'n',
-      img : './images/movie_image.jpg',
-      date: 20190214,
-    },
-    {
-      name: 'o',
-      img : './images/movie_image.jpg',
-      date: 20190215,
-    }
-  ]
-  console.log(movieGroup)
+  const mvSection = mvSectionWrap.appendChild(section);
   
-  function createMvListFunction(sectionName,movie){
-    const mvSectionWrap = document.querySelector('.mvSectionWrap');
-    const section = document.createElement('section');
-    const mvSection = mvSectionWrap.appendChild(section);
-    mvSection.className = 'mvSection';
+  const h4 = document.createElement('h4');
+  const ul = document.createElement('ul');
+  h4.innerHTML = sectionName;
+  ul.className = 'mvListSmall'; 
+
+  mvSection.appendChild(h4);
+  const mvListSmall = mvSection.appendChild(ul);
+
+  for(let  i = 0; i < movie.length && i<20; i++) {
+    const a = document.createElement('a');
+    const li = document.createElement('li');
+    const img = document.createElement('img');
+    const div = document.createElement('div');
+
+    a.href = `./movie.html#${movie[i].id}`;
+    img.src = `./images/${movie[i].id}.jpg`;
+    img.alt = `${movie[i].mvTitle} 포스터`;
+    div.className = 'mvSmallListTitle';
+    div.innerHTML = `${movie[i].mvTitle}`;
+    
+    li.appendChild(img);
+    li.appendChild(div);
+    a.appendChild(li);
+    mvListSmall.appendChild(a);
+  };
+}
+
+function createLatestMovies(){
+  let movie = getDB(TABLE.MOVIEINFO);
+    
+  movie.sort(function(a,b){
+    return b.openingDate - a.openingDate
+  });
   
-    const h4 = document.createElement('h4');
-    const ul = document.createElement('ul');
-    mvSection.appendChild(h4);
-    mvSection.appendChild(ul);
-    mvSection.firstChild.innerHTML = sectionName;
-    mvSection.lastChild.className = 'mvListSmall'; 
+  createMvListFunction('최신 영화',movie);
+}
+
+function createSameGenreMovies(genre){
+  let movie = getDB(TABLE.MOVIEINFO, MOVIEINFO.GENRE, genre);
+    
+  movie.sort(function(a,b){
+    return b.openingDate - a.openingDate
+  });
+
+  createMvListFunction(`#${genre} 영화`,movie);
+
+}
+
+function createLatestPopularMovies(){
+  let movie = getDB(TABLE.MOVIEINFO,MOVIEINFO.OPENDAY,'2020');
+
+  movie.sort(function(a,b){
+    return b.mvGrade - a.mvGrade
+  });
   
-    // for (let i = 0; i < movie.length; i++) {
-    //   const ul = document.createElement('li');
-      
-    // }
-  
-  }
+  createMvListFunction('최신 인기 영화',movie);
+}

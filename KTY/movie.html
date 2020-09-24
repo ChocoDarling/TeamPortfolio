@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <script src="../JKH/mysql/basicDB.js"></script>
 </head>
-<body>
+<body onresize="iframeHeight()">
     <div id="wrap">
         <header id="header">
             <div class="menuBtn">
@@ -38,7 +38,7 @@
             </div>
             <ul class="menuList">
                 
-                <a href="#">
+                <a href="./index.html">
                     <li class="menuHome">
                         <span>홈</span>
                         <span class="directionIcon"></span>
@@ -134,8 +134,8 @@
         <div id="contents">
             <div class="mvWrap">
                 <div class="playerWrap">
-                    <video class="player" src="./videos/sample.mp4" poster="./images/movie_image.jpg" controls></video>
-                </div>
+                    <!-- <video class="player" src="./videos/sample.mp4" poster="./images/movie_image.jpg" controls></video> -->
+                    <iframe src='https://tv.naver.com/embed/15362687?autoPlay=false' frameborder='no' scrolling='no' marginwidth='0' marginheight='0' allow='autoplay' allowfullscreen></iframe>                </div>
                 <div class="mvInfoWrap">
                     <h4 class="mvTitle">히트맨</h4>
                     <div class="mvSummary">
@@ -255,5 +255,7 @@
     <script src="./js/main.js"></script>
     <script src="./js/test.js"></script>
     <script src="./js/signUpLogin.js"></script>
+    <script src="./js/movie.js"></script>
+    <script src="./js/list.js"></script>
 </body>
 </html>

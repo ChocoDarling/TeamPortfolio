@@ -218,6 +218,15 @@ a{
   outline:none;
 }
 
+.searchList{
+  display: flex;
+  align-items: center;
+  height: 60px;
+  border-bottom: 1px solid #e3e3e3;
+  padding-left: 20px;
+  color: #a0a0a0;
+}
+
 .loginBg{
   display: none;
   position: fixed;
