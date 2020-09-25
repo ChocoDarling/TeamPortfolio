@@ -26,5 +26,4 @@
       menuLoginText.prepend(h2);
     }
   }
-
 })();

@@ -1,64 +1,26 @@
 
-const iframe = document.querySelector('.playerWrap iframe');
-  iframe.height = `${+iframe.offsetWidth * 1080 / 1920}`;
 
-function iframeHeight(){
-  iframe.height = `${+iframe.offsetWidth * 1080 / 1920}`;
-}
-
-let movie1 = [
-  {
-    _id : 'mulan',
-    title : '뮬란',
-    grade : '8.32',
-    genre : '모험, 드라마, 가족',
-    time : '115',
-    rate : '12',
-    img : './images/mulan.jpg',
-    video : './videos/tenet.mp4',
-  },
-  {
-    _id : 'TheWomanWhoRan',
-    title : '도망친 여자',
-    grade : '8.23',
-    genre : '드라마',
-    time : '77',
-    rate : '18',
-    img : './images/TheWomanWhoRan.jpg',
-    video : './videos/tenet.mp4',
-  },
-  {
-    _id : 'tenet',
-    title : '테넷',
-    grade : '7.00',
-    genre : '액션, SF',
-    time : '110',
-    rate : '15',
-    img : './images/tenet.jpg',
-    video : './videos/tenet.mp4',
-  },
-]
+const hash = location.hash.substring(1);
+const movie = getDB(TABLE.MOVIEINFO);
+const mvIndex = movie.findIndex(x=>x.id===hash);
 
 function hashCheck() {
-  const hash = location.hash.substring(1)
-  const movie = getDB(TABLE.MOVIEINFO);
+  
 
   if(location.hash){
-    const mvIndex = movie.findIndex(x=>x.id===hash)
-    const player = document.querySelector('.player');
+    const playerWrap = document.querySelector('.playerWrap');
     const mvTitle = document.querySelector('.mvTitle');
     const mvGrade = document.querySelector('.mvGrade');
     const mvGenre = document.querySelector('.mvGenre');
     const mvTime = document.querySelector('.mvTime');
     const mvRate = document.querySelector('.mvRate');
     
-    player.src = movie[mvIndex].video;
-    player.poster = movie[mvIndex].img;
-    mvTitle.innerHTML = movie[mvIndex].title;
-    mvGrade.innerHTML = `평점 ${movie[mvIndex].grade} /`;
-    mvGenre.innerHTML = `${movie[mvIndex].genre} /`;
+    playerWrap.innerHTML = movie[mvIndex].mvVideo;
+    mvTitle.innerHTML = movie[mvIndex].mvTitle;
+    mvGrade.innerHTML = `평점 ${movie[mvIndex].mvGrade} /`;
+    mvGenre.innerHTML = `${movie[mvIndex].mvGenre} /`;
     mvTime.innerHTML = `${movie[mvIndex].time}분 /`;
-    mvRate.innerHTML = `${movie[mvIndex].rate}세`;
+    mvRate.innerHTML = `${movie[mvIndex].mvLimit}세`;
   }
 
   else{
@@ -66,5 +28,26 @@ function hashCheck() {
   }
   
 };
+
+function createSameGenreList(movie) {
+  let genre = movie.mvGenre.split(',');
+  for(let i = 0; i < genre.length; i++) {
+        
+    while (genre[i].charAt(0) == ' ') {
+      genre[i] = genre[i].substring(1);
+    }
+    createSameGenreMovies(genre[i]);
+  }
+}
+
+
 hashCheck();
 window.onhashchange = hashCheck
+
+const mvVideo = document.getElementById('mvVideo');  
+mvVideo.height = `${+mvVideo.offsetWidth * 1080 / 1920}`;
+function iframeHeight(){
+  mvVideo.height = `${+mvVideo.offsetWidth * 1080 / 1920}`;
+}
+
+createSameGenreList(movie[mvIndex]);
