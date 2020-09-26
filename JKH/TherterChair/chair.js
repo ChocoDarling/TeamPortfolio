@@ -1,99 +1,123 @@
 function makeChiars() {
-    const row = Number.parseInt(document.getElementById('row').value);
-    const col = Number.parseInt(document.getElementById('col').value);
+    const chairs = document.getElementById('chairs');
+    chairs.innerHTML = null;
+    const row = Number.parseInt(document.getElementById('row').value) + 1;
+    const col = Number.parseInt(document.getElementById('col').value) + 1;
 
-    document.getElementById('chairs').innerHTML = '';
-    document.getElementById('chairs').style.width = (row + 1) * 34;
+    document.getElementById('chairs').innerHTML = null;
+    document.getElementById('chairs').style.width = col * 40;
 
-    for (let i = 0; i < col + 1; ++i) {
+    for (let i = 0; i < row; ++i) {
         const colChairs = document.createElement('div');
-        colChairs.style.height = '34px';
-        for (let j = 0; j < row + 1; ++j) {
+        chairs.appendChild(colChairs);
+        if (i) colChairs.classList.add('row');
+        for (let j = 0; j < col; ++j) {
             const chair = document.createElement('a');
-            const divInChair = document.createElement('div');
-
-            divInChair.style.marginTop = '3px';
-            chair.appendChild(divInChair);
-            chair.style.float = 'left';
-
-            if (i === 0) {
-                if (j === 0) {
-                    divInChair.style.marginTop = '1px';
-                    chair.style.width = '30px';
-                    chair.style.height = '23px';
-                    chair.style.borderTop = '3px solid blue';
-                    chair.style.margin = '2px';
-                } else {
-                    divInChair.value = j;
-                    divInChair.innerHTML = j;
-                    chair.className = 'chairs';
-                    chair.value = 1;
-                    chair.style.backgroundColor = 'black';
-                    chair.onclick = () => { clickChair(chair) };
-                }
-            } else {
-                if (j === 0) {
-                    divInChair.style.marginTop = '1px';
-                    divInChair.innerHTML = String.fromCharCode(64 + i);
-                    chair.style.width = '30px';
-                    chair.style.height = '23px';
-                    chair.style.borderTop = '3px solid blue';
-                    chair.style.margin = '2px';
-                } else {
-                    divInChair.value = j;
-                    divInChair.innerHTML = j;
-                    chair.href = '#';
-                    chair.className = 'chairs';
-                    chair.value = 1;
-                    chair.style.backgroundColor = 'gray';
-                    chair.onclick = () => { clickChair(chair) };
-                }
-            }
             colChairs.appendChild(chair);
+
+            chair.href = '#';
+            chair.classList.add('basic');
+
+            if (j === 0) {
+                if (i !== 0) chair.onclick = () => { clickHall(chair, true); };
+                chair.value = i;
+                chair.innerHTML = String.fromCharCode(64 + i);
+            } else {
+                if (i === 0) {
+                    chair.value = j;
+                    chair.onclick = () => { clickHall(chair, false); };
+                } else {
+                    chair.classList.add('chairs');
+                    chair.value = 0;
+                    chair.onclick = () => { clickChair(chair); };
+                }
+                chair.innerHTML = j;
+            }
         }
-        document.getElementById('chairs').appendChild(colChairs);
     }
+}
+
+function clickHall(element, isRow) {
+    if (isRow) {
+        const arrRow = document.getElementById('chairs').getElementsByTagName('div');
+        const arrChairs = arrRow[element.value].getElementsByTagName('a');
+        for (const iterator of arrChairs) {
+            changeHall(iterator);
+        }
+    } else {
+        const arrRow = document.getElementById('chairs').querySelectorAll('.row');
+        let over = false;
+        for (const iterator of arrRow) {
+            const arrChairs = iterator.getElementsByTagName('a');
+            let i = 0;
+            for (const iterator of arrChairs) {
+                if (i++ === parseInt(element.value)) over = changeHall(iterator);
+                else if (i > element.value) iterator.innerHTML = parseInt(iterator.innerHTML) + 1 - over;
+            }
+        }
+        
+    }
+
+
 }
 
 function clickChair(element) {
-    let backgroundColor;
-    
-    element.value = (element.value + 1) % 3;
-    switch (element.value) {
-        case 0:
-            backgroundColor = 'red';
-            break;
-        case 1:
-            backgroundColor = 'gray';
-            break;
-        default:
-            backgroundColor = 'white';
-            break;
+    if (element.classList.contains('empty')) element.classList.remove('empty');
+    else element.classList.add('empty');
+}
+
+function changeHall(element) {
+    if (element.classList.contains('hall')) {
+        element.classList.remove('hall');
+        return 0;
     }
-    element.style.backgroundColor = backgroundColor;
+    else element.classList.add('hall');
+    return 2;
 }
 
 function save() {
-    if (document.getElementById('chairs').children.length === 0) return;
+    if (
+        document.querySelectorAll('.chairs').length === 0 ||
+        document.getElementById('name').value === ''
+    ) return;
     
-    const row = Number.parseInt(document.getElementById('chairs').children[0].children.length) - 1;
-    const col = Number.parseInt(document.getElementById('chairs').children.length);
-    
-    console.log(row);
-    console.log(col);
-
-    const arrChairs = [];
-    for (let i = 0; i < col; ++i) {
-        const arrCol = [];
-        for (let j = 0; j < row; ++j) {
-            arrCol.push(document.getElementById('chairs').children[i].getElementsByClassName('chairs')[j].value);
+    const arrClass = ['.chairs', '.empty', '.hall'];
+    for (const className of arrClass) {
+        const arrClassElem = document.querySelectorAll(className);
+        for (const iterator of arrClassElem) {
+            switch (className) {
+                case '.chairs':
+                    iterator.value = 1;
+                    break;
+            
+                case '.empty':
+                    iterator.value = 2;
+                    break;
+            
+                case '.hall':
+                    iterator.value = 3;
+                    break;
+                        
+                default:
+                    break;
+            }
         }
-        arrChairs.push(arrCol);
     }
-    console.log(arrChairs.toString());
-    let text = '';
+
+    const arrRow = document.querySelectorAll('.row');
+    const arrChairs = [];
+    for (const iterator of arrRow) {
+        const tempArr = iterator.querySelectorAll('.chairs');
+        const tempValueArr = [];
+        console.log(tempArr);
+        for (const i of tempArr) {
+            tempValueArr.push(i.value);
+        }
+        console.log(tempValueArr);
+        arrChairs.push(tempValueArr);
+    }
     
-    saveAsFile(arrChairs, "output.txt");
+    saveAsFile(JSON.stringify(arrChairs), `${document.getElementById('name').value}.txt`);
 }
 
 function saveAsFile(str, filename) {

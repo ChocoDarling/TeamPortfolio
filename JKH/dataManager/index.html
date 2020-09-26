@@ -1,0 +1,223 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataManager</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./mysql/basicDB.js"></script>
+    <script src="./js_1.js"></script>
+    <script src="./resInfo/checkChairs.js"></script>
+</head>
+<body>
+    <div id="actionBox">
+        <div id="commendBox">
+            <div id="inCommendBox">
+                <fieldset id="commends">
+                    <legend>명령</legend>
+                    <a id="get" href="#" onclick="isClick(this)">가져오기</a>
+                    <a id="set" href="#" onclick="isClick(this)">수정</a>
+                    <a id="init" href="#" onclick="isClick(this)">저장하기</a>
+                    <a id="del" href="#" onclick="isClick(this)">삭제하기</a>
+                </fieldset>
+                <fieldset id="table">
+                    <legend>테이블</legend>
+                    <a id="users" href="#" onclick="isClick(this)">USERS</a>
+                    <a id="movieData" href="#" onclick="isClick(this)">MOVIEINFO</a>
+                    <a id="comments" href="#" onclick="isClick(this)">COMMENTS</a>
+                    <a id="therterInfo" href="#" onclick="isClick(this)">THERTERINFO</a>
+                    <a id="steelCut" href="#" onclick="isClick(this)">STEELCUT</a>
+                </fieldset>
+            </div>
+            <fieldset id="users" class="commends get del">
+                <legend>USERS</legend>
+                <a id="id" href="#" onclick="isClick(this)">ID</a>
+                <a id="pw" href="#" onclick="isClick(this)">PASSWORD</a>
+                <a id="name" href="#" onclick="isClick(this)">NAME</a>
+                <a id="phoneNum" href="#" onclick="isClick(this)">PHONGNUMBER</a>
+                <a id="resInfo" href="#" onclick="isClick(this)">RESINFO</a>
+                <textarea id="search" cols="30" rows="10"placeholder="검색어"></textarea>
+            </fieldset>
+            <fieldset id="movieData" class="commends get del">
+                <legend>MOVIEINFO</legend>
+                <a id="id" href="#" onclick="isClick(this)">ID</a>
+                <a id="mvTitle" href="#" onclick="isClick(this)">TITLE</a>
+                <a id="mvPoster" href="#" onclick="isClick(this)">POSTER</a>
+                <a id="mvStory" href="#" onclick="isClick(this)">STORY</a>
+                <a id="mvActor" href="#" onclick="isClick(this)">ACTOR</a>
+                <a id="openingDate" href="#" onclick="isClick(this)">OPENDAY</a>
+                <a id="mvGenre" href="#" onclick="isClick(this)">GENRE</a>
+                <a id="mvVideo" href="#" onclick="isClick(this)">VIDEO</a>
+                <a id="mvGrade" href="#" onclick="isClick(this)">GRADE</a>
+                <a id="mvLimit" href="#" onclick="isClick(this)">LIMIT</a>
+                <a id="time" href="#" onclick="isClick(this)">TIME</a>
+                <textarea id="search" cols="30" rows="10"placeholder="검색어"></textarea>
+            </fieldset>
+            <fieldset id="comments" class="commends get del">
+                <legend>COMMENTS</legend>
+                <a id="_id" href="#" onclick="isClick(this)">_ID</a>
+                <a id="userId" href="#" onclick="isClick(this)">USERID</a>
+                <a id="comment" href="#" onclick="isClick(this)">COMMENT</a>
+                <a id="score" href="#" onclick="isClick(this)">SCORE</a>
+                <a id="mvTitle" href="#" onclick="isClick(this)">TITLE</a>
+                <textarea id="search" cols="30" rows="10"placeholder="검색어"></textarea>
+            </fieldset>
+            <fieldset id="therterInfo" class="commends get del">
+                <legend>THERTERINFO</legend>
+                <a id="id" href="#" onclick="isClick(this)">ID</a>
+                <a id="name" href="#" onclick="isClick(this)">NAME</a>
+                <a id="area" href="#" onclick="isClick(this)">AREA</a>
+                <a id="chairs" href="#" onclick="isClick(this)">ROOM</a>
+                <textarea id="search" cols="30" rows="10"placeholder="검색어"></textarea>
+            </fieldset>
+            <fieldset id="steelCut" class="commends get del">
+                <legend>STEELCUT</legend>
+                <a id="id" href="#" onclick="isClick(this)">ID</a>
+                <a id="mvName" href="#" onclick="isClick(this)">MOVIE</a>
+                <a id="url" href="#" onclick="isClick(this)">FILENAME</a>
+                <textarea id="search" cols="30" rows="10"placeholder="검색어"></textarea>
+            </fieldset>
+            <fieldset id="users" class="commends set init">
+                <legend>USERS</legend>
+                <ul>
+                    <li>
+                        <label>ID : </label>
+                        <input type="text" id="id" placeholder="아이디">
+                    </li>
+                    <li>
+                        <label>PASSWORD : </label>
+                        <input type="text" id="pw" placeholder="비밀번호">
+                    </li>
+                    <li>
+                        <label>NAME : </label>
+                        <input type="text" id="name" placeholder="이름">
+                    </li>
+                    <li>
+                        <label>PHONENUMBER : </label>
+                        <input type="text" id="phoneNum" placeholder="전화번호">
+                    </li>
+                    <li>
+                        <label>RESINFO : </label>
+                        <input type="text" id="resInfo" placeholder="예매내역">
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset id="movieData" class="commends set init">
+                <legend>MOVIEINFO</legend>
+                <ul>
+                    <li>
+                        <label>ID : </label>
+                        <input type="text" id="id" placeholder="ID">
+                    </li>
+                    <li>
+                        <label>영화제목 : </label>
+                        <input type="text" id="mvTitle" placeholder="영화제목">
+                    </li>
+                    <li>
+                        <label>포스터 : </label>
+                        <input type="text" id="mvPoster" placeholder="파일이름 (저장은 poster에)">
+                    </li>
+                    <li>
+                        <label>줄거리 : </label>
+                        <textarea id="mvStory" cols="30" rows="10"placeholder="줄거리"></textarea>
+                    </li>
+                    <li>
+                        <label>영화배우 : </label>
+                        <textarea id="mvActor" cols="30" rows="10"placeholder="영화배우"></textarea>
+                    </li>
+                    <li>
+                        <label>개봉일 : </label>
+                        <input type="text" id="openingDate" placeholder="개봉일">
+                    </li>
+                    <li>
+                        <label>장르 : </label>
+                        <input type="text" id="mvGenre" placeholder="장르">
+                    </li>
+                    <li>
+                        <label>비디오 : </label>
+                        <input type="text" id="mvVideo" placeholder="장르">
+                    </li>
+                    <li>
+                        <label>평점 : </label>
+                        <input type="text" id="mvGrade" placeholder="평점">
+                    </li>
+                    <li>
+                        <label>제한 : </label>
+                        <input type="text" id="mvLimit" placeholder="등급제한">
+                    </li>
+                    <li>
+                        <label>영상시간 : </label>
+                        <textarea id="time" cols="30" rows="10"placeholder="플레이타임"></textarea>
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset id="comments" class="commends set init">
+                <legend>COMMENTS</legend>
+                <ul>
+                    <li>
+                        <label>USERID : </label>
+                        <input type="text" id="userId" placeholder="유저">
+                    </li>
+                    <li>
+                        <label>COMMENT : </label>
+                        <input type="text" id="comment" placeholder="댓글">
+                    </li>
+                    <li>
+                        <label>SCORE : </label>
+                        <input type="text" id="score" placeholder="평점">
+                    </li>
+                    <li>
+                        <label>TITLE : </label>
+                        <input type="text" id="mvTitle" placeholder="영화제목">
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset id="therterInfo" class="commends set init">
+                <legend>THERTERINFO</legend>
+                <ul>
+                    <li>
+                        <label>ID : </label>
+                        <input type="text" id="id" placeholder="ID">
+                    </li>
+                    <li>
+                        <label>NAME : </label>
+                        <input type="text" id="name" placeholder="영화관 이름">
+                    </li>
+                    <li>
+                        <label>AREA : </label>
+                        <input type="text" id="area" placeholder="지역">
+                    </li>
+                    <li>
+                        <label>ROOM : </label>
+                        <input type="text" id="chairs" placeholder="[[의자배열]]">
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset id="steelCut" class="commends set init">
+                <legend>STEELCUT</legend>
+                <ul>
+                    <li>
+                        <label>ID : </label>
+                        <input type="text" id="id" placeholder="MOVIEID">
+                    </li>
+                    <li>
+                        <label>MOVIE : </label>
+                        <input type="text" id="mvName" placeholder="MOVIEID">
+                    </li>
+                    <li>
+                        <label>FILENAME : </label>
+                        <input type="text" id="url" placeholder="파일 이름">
+                    </li>
+                </ul>
+            </fieldset>
+            
+        </div>
+        <div id="resultBox">
+            <a id="action" href="#" onclick="action()">실행</a>
+            <a>결과 : <span id="result"></span></a>
+        </div>
+    </div>
+    <div id="list">
+        
+    </div>
+</body>
+</html>

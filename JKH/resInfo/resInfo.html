@@ -1,0 +1,31 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화예매</title>
+    <script src="../mysql/basicDB.js"></script>
+    <link rel="stylesheet" href="./resInfo.css">
+    <script src="./checkChairs.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header"><div id="miniView"></div><div id="minimap"><div id="screen"></div><div id="space"></div></div></div>
+        <div id="theater" onscroll="synchroMiniView(this)">
+            <div id="theaterBox">
+                <div id="screen">SCREEN</div>
+                <div id="space"></div>
+            </div>
+        </div>
+        <div id="foot" onclick="onReservation()">
+            <div id="submit">
+                <a href="#" class="arrow" onclick="changePeople(event, false)">&larr;</a>
+                <div id="people"> 인원 : <span id="count">1</span></div>
+                <a href="#" class="arrow" onclick="changePeople(event, true)">&rarr;</a>
+                <a href="#" id="reservation" onclick="resPost()">예매하기</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="./resInfo.js"></script>
+</body>
+</html>

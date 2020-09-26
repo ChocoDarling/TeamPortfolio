@@ -10,28 +10,31 @@
     $dbname = "rudekrudgns";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
-
+    
     if ($request->command === 'get') {
         $sql = "SELECT * FROM ".$request->table;
 
         if ($request->condition) {
             $sql = $sql." WHERE ".$request->condition;
             if ($request->findData) {
-                $findData = " LIKE '%".$request->findData."%'";
+                $sql = $sql." LIKE '";
+                if ($request->isExact) {
+                    $sql = $sql.$request->findData."'";
+                } else {
+                    $sql = $sql."%".$request->findData."%'";
+                }
             }
         }
         
         $result = $conn->query($sql);
 
-        if ($result->num_rows > 1) {
+        if ($result->num_rows > 0) {
             $arrMv = array();
           // output data of each row
             while($row = $result->fetch_assoc()) {
                 $arrMv[] = $row;
             }
             echo json_encode($arrMv);
-        } else if ($result->num_rows > 0) {
-            echo json_encode($result->fetch_assoc());
         } else {
             echo json_encode('no Data');
         }
@@ -69,8 +72,8 @@
         $result = $conn->query($sql);
 
         echo json_encode($result);
-    } else if ($request->command === 'delete') {
-        $sql = "SELECT * FROM ".$request->table." WHERE id LIKE '".$request->id."'";
+    } else if ($request->command === 'del') {
+        $sql = "SELECT * FROM ".$request->table." WHERE ".$request->condition." LIKE '".$request->id."'";
         $result = $conn->query($sql);
 
         if (!$result->num_rows) {
@@ -79,11 +82,21 @@
             return;
         }
 
-        $sql = "DELETE FROM ".$request->table." WHERE id='".$request->id."'";
+        $sql = "DELETE FROM ".$request->table." WHERE ".$request->condition."='".$request->id."'";
         $result = $conn->query($sql);
 
         echo json_encode($result);
-    }
+    } else if ($request->command === 'once') {
+        $sql = "SELECT DISTINCT ".$request->condition." FROM ".$request->table;
+        $result = $conn->query($sql);
+
+        $arrMv = array();
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            $arrMv[] = $row;
+        }
+        echo json_encode($arrMv);
+    } 
     
     $conn->close();
 ?>

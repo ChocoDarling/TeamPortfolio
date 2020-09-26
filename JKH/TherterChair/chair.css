@@ -1,5 +1,10 @@
+input[type=number] {
+    width: 50px;
+}
+
 div {
     text-align: center;
+    margin: 0px;
 }
 
 #chairs {
@@ -7,10 +12,36 @@ div {
     padding: 10px;
 }
 
-.chairs {
-    width: 30px;
-    height: 30px;
-    color: white;
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    width: 34px;
+    height: 34px;
+    color: black;
     margin: 2px;
     text-decoration: none;
+    border: 1px solid black;
+}
+
+.chairs.hall{
+    color: gray;
+    background-color: gray;
+    border: 1px solid gray;
+}
+
+.empty {
+    color: white;
+    border: 1px solid white;
+}
+
+.chairs.rowNames {
+    width: 36px;
+    height: 30px;
+    color: black;
+    margin: 2px;
+    text-decoration: none;
+    border: none;
+    border-top: 4px solid blue;
 }

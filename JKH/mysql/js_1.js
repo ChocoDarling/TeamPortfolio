@@ -130,8 +130,6 @@ function resetTable() {
         <th>댓글<br>(mvComment)</th>`;
 }
 
-
-
 function TESTgetMvDB(table = "", columns = "", findColums = "", findData = "") {
     const tempGetDBData = {
         table: table,

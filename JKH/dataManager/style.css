@@ -1,0 +1,115 @@
+#actionBox {
+    display: flex;
+    flex-direction: column;
+}
+
+#commendBox {
+    display: flex;
+    width: auto;
+}
+
+#inCommendBox {
+    display: flex;
+    flex-direction: column;
+}
+
+#resultBox {
+    margin: 2px;
+    padding: 12px;
+    border: 2px groove threedface;
+    display: flex;
+}
+
+#resultBox a {
+    width: 108px;
+}
+
+fieldset {
+    display: flex;
+    width: auto;
+    height: auto;
+}
+
+a {
+    color: white;
+    background-color: black;
+    margin: 5px;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: 900;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+a.checked {
+    color: black;
+    background-color: white;
+}
+
+.get {
+    display: none;
+}
+
+.get.checked {
+    display: flex;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0px;
+}
+
+#users li label {
+    width: 150px;
+    float: left;
+}
+
+#movieData li label {
+    width: 90px;
+    float: left;
+}
+
+#comments li label {
+    width: 100px;
+    float: left;
+}
+
+#therterInfo li label {
+    width: 70px;
+    float: left;
+}
+
+input[type=text] {
+    width: 300px;
+}
+
+textarea {
+    width: 300px;
+    height: 45px;
+}
+
+#movieData.init #mvStory {
+    width: 300px;
+}
+
+.set.init {
+    display: none;
+}
+
+.set.init.checked {
+    display: flex;
+}
+
+th, td {
+    padding: 0 10px;
+    border: 1px solid black;
+}
+
+iframe {
+    width: 128px;
+    height: 72px;
+}

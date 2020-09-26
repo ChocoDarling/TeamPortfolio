@@ -1,0 +1,23 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>댓글!</title>
+    <script src="./js_1.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="fullScreen">
+        <div id="commentDiv">
+    
+        </div>
+        <div id="writeDiv">
+            <div id="writeComment" onclick="writeComment('writeComment')">글쓰기</div>
+            <div id="writeCommentCancel" onclick="writeCommentCancel('writeComment')">취소</div>
+        </div>
+        <div id="commentInitDiv">
+            <input id="commentText" type="text" onkeyup="" placeholder="착한말만 사용하세요.">
+        </div>
+    </div>
+</body>
+</html>
