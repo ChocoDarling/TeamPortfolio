@@ -1,3 +1,19 @@
+(function loginCheckFunction(){
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let cookiePiece = decodedCookie.split(';');
+  for(let i = 0; i < cookiePiece.length; i++) {
+        
+    while (cookiePiece[i].charAt(0) == ' ') {
+      cookiePiece[i] = cookiePiece[i].substring(1);
+    }
+    if (cookiePiece[i].indexOf('userId') != 0) {
+      userId = cookiePiece[i].substring(7, cookiePiece[i].length);
+      location.replace("./index.html");
+      alert('로그인이 필요한 페이지입니다.');
+    }
+  }
+})();
+
 
 
 const hash = location.hash.substring(1);
@@ -29,9 +45,20 @@ function hashCheck() {
   
 };
 
+function createSameActorList(movie) {
+  let actor = movie.mvActor.split(',');
+  for(let i = 0; i < actor.length && i < 3; i++) {
+        
+    while (actor[i].charAt(0) == ' ') {
+      actor[i] = actor[i].substring(1);
+    }
+    createSameActorMovies(actor[i]);
+  }
+}
+
 function createSameGenreList(movie) {
   let genre = movie.mvGenre.split(',');
-  for(let i = 0; i < genre.length; i++) {
+  for(let i = 0; i < genre.length && i < 3; i++) {
         
     while (genre[i].charAt(0) == ' ') {
       genre[i] = genre[i].substring(1);
@@ -43,6 +70,8 @@ function createSameGenreList(movie) {
 
 hashCheck();
 window.onhashchange = hashCheck
+createSameActorList(movie[mvIndex]);
+createSameGenreList(movie[mvIndex]);
 
 const mvVideo = document.getElementById('mvVideo');  
 mvVideo.height = `${+mvVideo.offsetWidth * 1080 / 1920}`;
@@ -50,4 +79,3 @@ function iframeHeight(){
   mvVideo.height = `${+mvVideo.offsetWidth * 1080 / 1920}`;
 }
 
-createSameGenreList(movie[mvIndex]);

@@ -53,6 +53,17 @@ function createSameGenreMovies(genre){
 
 }
 
+function createSameActorMovies(actor){
+  let movie = getDB(TABLE.MOVIEINFO, MOVIEINFO.ACTOR, actor);
+    
+  movie.sort(function(a,b){
+    return b.openingDate - a.openingDate
+  });
+
+  createMvListFunction(`#${actor} 출연작`,movie);
+
+}
+
 function createLatestPopularMovies(){
   let movie = getDB(TABLE.MOVIEINFO,MOVIEINFO.OPENDAY,'2020');
 

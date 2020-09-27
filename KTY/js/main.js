@@ -1,3 +1,23 @@
+(function loginCheckFunction(){
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let cookiePiece = decodedCookie.split(';');
+  for(let i = 0; i < cookiePiece.length; i++) {
+        
+    while (cookiePiece[i].charAt(0) == ' ') {
+      cookiePiece[i] = cookiePiece[i].substring(1);
+    }
+    if (cookiePiece[i].indexOf('userId') != 0) {
+      userId = cookiePiece[i].substring(7, cookiePiece[i].length);
+      const mvListLink = document.querySelectorAll('.mvListSmall a');
+      for (let i = 0; i < mvListLink.length; i++) {
+        mvListLink[i].href = '';
+        mvListLink[i].addEventListener('click',()=> alert('로그인이 필요합니다'))
+      }
+    }
+  }
+})();
+
+
 (function slideFunction() {
   const slideBg = document.querySelector('.slideBg');
 
