@@ -1,44 +1,5 @@
 #fullScreen {
-    width: 100%;
-}
-
-#commentDiv {
-
-}
-
-#writeDiv {
-    display: flex;
-}
-
-#writeComment {
-    width: 600px;
-    margin: auto;
-    border: 1px solid black;
-    text-align: center;
-    padding: 10px;
-}
-
-#writeCommentCancel {
-    width: 280px;
-    margin: auto;
-    border: 1px solid black;
-    text-align: center;
-    padding: 10px;
-    display: none;
-    float: right;
-}
-
-
-#commentInitDiv {
-    text-align: center;
-    margin: auto;
-    margin-top: 20px;
-    width: 100%;
-    display: none;
-}
-
-#commentText {
-    margin: auto;
-    width: 700px;
-    height: 300px;
+    width: 375px;
+    height: 500px;
+    /* height: max-content; */
 }

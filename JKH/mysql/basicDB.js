@@ -63,6 +63,7 @@ function initDB(table, object) {
         table: table,
         object: object
     };
+    if (table === TABLE.USERS) tempDBData.object['resInfo'] = JSON.stringify([]);
     let xhr = new XMLHttpRequest();
 
     xhr.open('POST', 'http://rudekrudgns.cafe24.com/JKH/mysql/basicDB.php', false);
@@ -122,7 +123,9 @@ function getOnce(table, condition) {
 }
 
 function getID(id) {
-    return getDB(TABLE.USERS, USERS.ID, id, true)[0];
+    const tempID = getDB(TABLE.USERS, USERS.ID, id, true);
+    if (tempID === 'no Data') return 'no Data';
+    return tempID[0];
 }
 
 function getCount(table, condition = "", findData = "") {
@@ -133,4 +136,16 @@ function getCount(table, condition = "", findData = "") {
 
 function getCountTheater(theaterName) {
     return parseInt(getDB(TABLE.THERTERINFO, THERTERINFO.NAME, theaterName, true).chairs.length);
+}
+
+function getResInfo(id) {
+    return JSON.parse(getID(id).resInfo);
+}
+
+function initResInfoInId(id, resInfo) {
+    const tempID = getID(id);
+    const tempArr = getResInfo(id);
+    tempArr.push(resInfo);
+    tempID.resInfo = JSON.stringify(tempArr);
+    setDB(TABLE.USERS, tempID);
 }

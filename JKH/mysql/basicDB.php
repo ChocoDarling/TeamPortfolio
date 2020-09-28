@@ -50,7 +50,7 @@
 
         $sql = "INSERT INTO ".$request->table." (".$keys.") VALUES (".$values.")";
         $result = $conn->query($sql);
-
+        
         echo json_encode($result);
     } else if ($request->command === 'set') {
         $sql = "SELECT * FROM ".$request->table." WHERE id LIKE '".$request->object->id."'";
@@ -67,7 +67,7 @@
             $values = $values.$key."='".$value."', ";
         }
         $values = mb_substr($values, 0, -2);
-
+        
         $sql = "UPDATE ".$request->table." SET ".$values." WHERE id='".$request->object->id."'";
         $result = $conn->query($sql);
 

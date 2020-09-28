@@ -21,6 +21,7 @@ function loadChairs(obj) {
             e.time === obj.time
         ) return true;
     });
+    let tempText;
     arrChairs = JSON.parse(findChiars.chairs);
     
     arrChairs.forEach((c, i) => {
@@ -38,20 +39,21 @@ function loadChairs(obj) {
             tempChair.value = j;
             tempChair.classList.add('chair');
             tempChairMini.classList.add('chair');
+            tempChairMini.value = cc;
             tempRow.appendChild(tempChair);
             tempRowMini.appendChild(tempChairMini);
             switch (cc) {
                 case 0:
                     tempChair.classList.add('saleOut');
                     tempChairMini.classList.add('saleOut');
-                    let tempText = String.fromCharCode(65 + i);
+                    tempText = String.fromCharCode(65 + i);
                     if (j + tempCount < 10) tempText = `${tempText}0`;
                     tempChair.innerHTML = `${tempText}${j + tempCount}`;
                     tempChair.href = '#';
                     break;
             
                 case 1:
-                    let tempText = String.fromCharCode(65 + i);
+                    tempText = String.fromCharCode(65 + i);
                     if (j + tempCount < 10) tempText = `${tempText}0`;
                     tempChair.innerHTML = `${tempText}${j + tempCount}`;
                     tempChair.href = '#';
@@ -152,26 +154,95 @@ function synchroMiniView(e) {
 }
 
 function resPost() {
-    let arrChairs = getDB('theaterChairs', 'theaterid', obj.theater, true);
+    const user = getUserIdInCookie();
+    if (!user) return;
+
+    let arrChairs = getDB('theaterChairs', 'theaterid', nowData.theater, true);
     const findChiars = arrChairs.find(e => {
         if (
-            parseInt(e.number) === parseInt(obj.number) &&
-            e.time === obj.time
+            parseInt(e.number) === parseInt(nowData.number) &&
+            e.time === nowData.time
         ) return true;
     });
+
+    const arrCheckedMini = document.querySelectorAll('#minimap .checked');
+    for (const iterator of arrCheckedMini) {
+        iterator.value = 0;
+    }
+
+    const arrMiniRows = document.querySelectorAll('#minimap .rowChairs');
+    let tempText = [];
+    
+    for (const row of arrMiniRows) {
+        const arrChairs = row.querySelectorAll('.chair');
+        const arrChairValues = [];
+        for (const c of arrChairs) {
+            arrChairValues.push(c.value);
+        }
+        tempText.push(arrChairValues);
+    }
+    findChiars.chairs = JSON.stringify(tempText);
+    setDB('theaterChairs', findChiars);
+    
     const arrCheckedChairs = document.querySelectorAll('#theater .checked');
-    
-    tempArrMiniChairs[
-        (e.innerHTML[0].charCodeAt(0) -65) *
-         +(e.parentElement.querySelectorAll('.chair').length) + 
-         +e.value].classList.add('checked');
-    
+    const arrResChairs = [];
+    for (const iterator of arrCheckedChairs) {
+        arrResChairs.push(iterator.innerHTML);
+    }
+    nowData['mvTitle'] = 'tenet';
+    nowData['chair'] = arrResChairs;
+    initResInfoInId(user, nowData);
+    location.href = 'http://rudekrudgns.cafe24.com/KTY/index.html'
 }
 
 // getTheaterChairs(1, 1, '13:30');
-hashToObject(location.hash);
-const nowData = { theater: 1, number: 1, time: '13:30' };
+// hashToObject(location.hash);
+// const nowData = hashToObject(location.hash);
+console.log('좌석 갯수 : ' + getTheaterChairs('theswordsman', 1, 1, '09/28', '13:30'));
+const nowData = { mvId: 'theswordsman', theaterId: 1, time: '13:30', number: 1, date: '09/28' };
 loadChairs(nowData);
 
+function getUserIdInCookie() {
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let cookiePiece = decodedCookie.split(';');
+    for(let i = 0; i < cookiePiece.length; i++) {
+            
+        while (cookiePiece[i].charAt(0) == ' ') {
+            cookiePiece[i] = cookiePiece[i].substring(1);
+        }
+        if (cookiePiece[i].indexOf('userId') == 0) {
+            return cookiePiece[i].substring(7, cookiePiece[i].length);
+        }
+    }
+    return false;
+}
 
-    // location.href = '../index.html';
+(function loginCheckFunction(){
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let cookiePiece = decodedCookie.split(';');
+    for(let i = 0; i < cookiePiece.length; i++) {
+            
+        while (cookiePiece[i].charAt(0) == ' ') {
+            cookiePiece[i] = cookiePiece[i].substring(1);
+        }
+        if (cookiePiece[i].indexOf('userId') != 0) {
+            userId = cookiePiece[i].substring(7, cookiePiece[i].length);
+            location.replace("http://rudekrudgns.cafe24.com/KTY/index.html");
+            alert('로그인이 필요한 페이지입니다.');
+        }
+    }
+})();
+
+// "[{"theater":1,"number":1,"time":"13:30","mvTitle":"tenet","chair":["D05"]},
+// {"theater":1,"number":1,"time":"13:30","mvTitle":"tenet","chair":["D01","E01","E02","E03"]},
+// {"theater":1,"number":1,"time":"13:30","mvTitle":"tenet","chair":["E04"]},
+// {"mvId":"tenet","theaterId":1,"time":"13:30","number":1,"date":"09/28","mvTitle":"tenet","chair":["H09"]},
+// {
+//     "mvId":"theswordsman",  // 영화아이디
+//     "theaterId":1,          // 영화관 아이디
+//     "time":"13:30",         // 영화 시간
+//     "number":1,             // 1관
+//     "date":"09/28",         // 날짜
+//     "chair":["A03"]         // 좌석
+// },
+// {"mvId":"theswordsman","theaterId":1,"time":"13:30","number":1,"date":"09/28","chair":["A05"]}]"

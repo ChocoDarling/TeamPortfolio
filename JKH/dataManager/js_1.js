@@ -27,7 +27,8 @@ function action() {
     const tempTable = document.createElement('table');
     const columnElem = document.querySelector(`.get#${table}`).querySelector('.checked');
     const arrColElement = document.querySelectorAll(`#${table}.get a`);
-    const arrInitElem = document.querySelectorAll(`#${table} input`);
+    const arrInitElem = document.querySelectorAll(`#${table}.init input`);
+    const arrInitAreaElem = document.querySelectorAll(`#${table}.init textarea`);
     const resultBox = document.querySelector(`#result`);
     let search = document.querySelector(`#${table}.get #search`).value;
     let column; 
@@ -69,8 +70,14 @@ function action() {
         case 'set':
             for (const iterator of arrInitElem) {
                 if (iterator.value) {
-                    tempObject[iterator.id] = iterator.value;
-                    if (iterator.id === "mvVideo") tempObject[iterator.id] = (iterator.value).replace('width="1280" height="720" ', 'id="mvVideo"');
+                    tempObject[iterator.id] = iterator.value.replace(/'/g, `"`);
+                    if (iterator.id === "mvVideo") tempObject[iterator.id] = (iterator.value).replace('<iframe', '<iframe id="mvVideo"').replace(/'/g, `"`);
+                }
+            }
+            for (const iterator of arrInitAreaElem) {
+                if (iterator.value) {
+                    tempObject[iterator.id] = iterator.value.replace(/'/g, `"`);
+                    if (iterator.id === "mvVideo") tempObject[iterator.id] = (iterator.value).replace('<iframe', '<iframe id="mvVideo"').replace(/'/g, `"`);
                 }
             }
             if (table === 'movieData' && tempObject['mvPoster']) {
@@ -79,18 +86,21 @@ function action() {
             if (table === 'steelCut' && tempObject['url']) {
                 tempObject['url'] = `http://rudekrudgns.cafe24.com/steelCut/${tempObject['mvName']}/${tempObject['url']}.jpg`
             }
-            console.log(tempObject);
             result = setDB(table, tempObject);
+            console.log(tempObject);
 
             break;
     
         case 'init':
             for (const iterator of arrInitElem) {
-                tempObject[iterator.id] = iterator.value;
-                if (iterator.id === "mvVideo") tempObject[iterator.id] = (iterator.value).replace('width="1280" height="720" ', 'id="mvVideo"');
+                tempObject[iterator.id] = iterator.value.replace(/'/g, `"`);
+                if (iterator.id === "mvVideo") tempObject[iterator.id] = (iterator.value).replace('iframe', 'iframe id="mvVideo"').replace(/'/g, `"`);
+            }
+            for (const iterator of arrInitAreaElem) {
+                tempObject[iterator.id] = iterator.value.replace(/'/g, `"`);
+                if (iterator.id === "mvVideo") tempObject[iterator.id] = (iterator.value).replace('iframe', 'iframe id="mvVideo"').replace(/'/g, `"`);
             }
             if (table === 'comments' || table === 'therterInfo' || table === 'steelCut') {
-                console.log(getCount(table));
                 tempObject['id'] = getCount(table) + 1;
             }
             if (table === 'comments') {
