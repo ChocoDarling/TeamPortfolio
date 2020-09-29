@@ -133,15 +133,16 @@ function getCount(table, condition = "", findData = "") {
     if (tempCount === 'no Data') return 0;
     return parseInt(tempCount.length);
 }
-
-function getCountTheater(theaterName) {
-    return parseInt(getDB(TABLE.THERTERINFO, THERTERINFO.NAME, theaterName, true).chairs.length);
+// 영화관의 상영관 갯수
+function getCountTheater(theaterId) {
+    if (!theaterId) return 0;
+    return parseInt(JSON.parse(getDB(TABLE.THERTERINFO, 'id', theaterId, true)[0].chairs).length);
 }
-
+// id에 대한 예매정보
 function getResInfo(id) {
     return JSON.parse(getID(id).resInfo);
 }
-
+// id에 대한 예매 정보 삽입
 function initResInfoInId(id, resInfo) {
     const tempID = getID(id);
     const tempArr = getResInfo(id);

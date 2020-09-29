@@ -1,4 +1,5 @@
 function initComment(elementId, userId, mvTitle) {
+    elementId.innerHTML = null;
     document.getElementById(elementId).display = 'block';
     const arrTextDiv = document.createElement('div');
     const fullDiv = document.createElement('div');

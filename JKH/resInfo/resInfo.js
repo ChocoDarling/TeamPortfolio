@@ -1,3 +1,29 @@
+
+function getUserIdInCookie() {
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let cookiePiece = decodedCookie.split(';');
+    for(let i = 0; i < cookiePiece.length; i++) {
+            
+        while (cookiePiece[i].charAt(0) == ' ') {
+            cookiePiece[i] = cookiePiece[i].substring(1);
+        }
+        if (cookiePiece[i].indexOf('userId') == 0) {
+            return cookiePiece[i].substring(7, cookiePiece[i].length);
+        }
+    }
+    return false;
+}
+
+(function loginCheckFunction(){
+    if (!getUserIdInCookie()) {
+        location.replace("http://rudekrudgns.cafe24.com/KTY/index.html");
+        alert('로그인이 필요한 페이지입니다.');
+    }
+})();
+
+
+
+
 function changePeople(e, isPlus) {
     e.stopPropagation();
     const tempCount = document.getElementById('count');
@@ -189,7 +215,7 @@ function resPost() {
     for (const iterator of arrCheckedChairs) {
         arrResChairs.push(iterator.innerHTML);
     }
-    nowData['mvTitle'] = 'tenet';
+    if (!arrResChairs.length)return;
     nowData['chair'] = arrResChairs;
     initResInfoInId(user, nowData);
     location.href = 'http://rudekrudgns.cafe24.com/KTY/index.html'
@@ -197,41 +223,11 @@ function resPost() {
 
 // getTheaterChairs(1, 1, '13:30');
 // hashToObject(location.hash);
-// const nowData = hashToObject(location.hash);
-console.log('좌석 갯수 : ' + getTheaterChairs('theswordsman', 1, 1, '09/28', '13:30'));
-const nowData = { mvId: 'theswordsman', theaterId: 1, time: '13:30', number: 1, date: '09/28' };
+const nowData = hashToObject(location.hash);
+console.log(nowData);
+// const nowData = { mvId: 'theswordsman', theaterId: '6', number: '1', date: '09/28', time: '13:30' };
+// console.log('좌석 갯수 : ' + getTheaterChairs(nowData.mvId, nowData.theaterId, nowData.number, nowData.date, nowData.time));
 loadChairs(nowData);
-
-function getUserIdInCookie() {
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let cookiePiece = decodedCookie.split(';');
-    for(let i = 0; i < cookiePiece.length; i++) {
-            
-        while (cookiePiece[i].charAt(0) == ' ') {
-            cookiePiece[i] = cookiePiece[i].substring(1);
-        }
-        if (cookiePiece[i].indexOf('userId') == 0) {
-            return cookiePiece[i].substring(7, cookiePiece[i].length);
-        }
-    }
-    return false;
-}
-
-(function loginCheckFunction(){
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let cookiePiece = decodedCookie.split(';');
-    for(let i = 0; i < cookiePiece.length; i++) {
-            
-        while (cookiePiece[i].charAt(0) == ' ') {
-            cookiePiece[i] = cookiePiece[i].substring(1);
-        }
-        if (cookiePiece[i].indexOf('userId') != 0) {
-            userId = cookiePiece[i].substring(7, cookiePiece[i].length);
-            location.replace("http://rudekrudgns.cafe24.com/KTY/index.html");
-            alert('로그인이 필요한 페이지입니다.');
-        }
-    }
-})();
 
 // "[{"theater":1,"number":1,"time":"13:30","mvTitle":"tenet","chair":["D05"]},
 // {"theater":1,"number":1,"time":"13:30","mvTitle":"tenet","chair":["D01","E01","E02","E03"]},

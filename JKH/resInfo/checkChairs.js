@@ -1,6 +1,12 @@
 function getTheaterChairs(mvId, theaterId, number, date, time) {
     const tempData = getDB('theaterChairs', 'theaterId', theaterId, true);
-    
+    console.log(tempData);
+    console.log(mvId);
+    console.log(theaterId);
+    console.log(number);
+    console.log(date);
+    console.log(time);
+
     if (tempData === 'no Data') return initResInfo({ mvId: mvId, theaterId: theaterId, time: time, number: number, date: date });
     else {
         let findChiars;
