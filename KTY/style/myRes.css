@@ -1,0 +1,26 @@
+.resMvWrap{
+  padding: 20px 10px 40px;
+
+}
+
+.resMvWrap h2{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #aaa;
+}
+
+
+.resList{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.resList:first-child{
+    padding-top: 10px;
+}
+.resList:last-child{
+    border-bottom: 0px;
+}
+
+.resList div{
+    padding-bottom: 2px;
+}

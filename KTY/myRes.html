@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movie - 예매내역</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/myRes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <script src="../JKH/mysql/basicDB.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div class="menuBtn">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="logo">
+                <a href="http://rudekrudgns.cafe24.com/KTY/index.html">Mobie</a>
+            </div>
+            <div class="searchBtn"></div>
+        </header>
+        <div class="slideBg"></div>
+        <div class="menuSlide">
+            <div class="menuCloseBtn"></div>
+            <div class="menuLoginWrap">
+                <div class="menuLoginText">
+                    <h3>로그인 해주세요</h3>
+                    <div>
+                        <span class="login">로그인 ></span>
+                        <span class="signUp">회원가입 ></span>
+                        <span class="logout">로그아웃</span>
+                    </div>
+                </div>
+                <div class="mobieCircle">Mobie</div>
+            </div>
+            <ul class="menuList">
+                <li class="menuHome">
+                    <a href="http://rudekrudgns.cafe24.com/KTY/index.html">
+                        <span>홈</span>
+                        <span class="directionIcon"></span>
+                    </a>   
+                </li>
+                <li class="menuMvRes">
+                    <a href="http://rudekrudgns.cafe24.com/IBR/mvRes.html">
+                        <span>영화 예매</span>
+                        <span class="directionIcon"></span>
+                    </a>        
+                </li>
+                <li class="menuMyRes">
+                    <a href="http://rudekrudgns.cafe24.com/KTY/myRes.html">
+                        <span>예매 내역</span>
+                        <span class="directionIcon"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="searchSlide">
+            <div class="searchWrap">
+                <div class="searchCloseBtn">
+                    <div class="directionIcon"></div>
+                </div>
+                <div class="searchBox">
+                    <input type="search" class="searchInput" placeholder="검색어를 입력해 주세요">
+                </div>
+            </div>
+            <div class="searchResultWrap">
+                <ul>
+                </ul>
+            </div>
+        </div>
+        <div class="loginWrap">
+            <div class="loginBg"></div>
+            <div class="loginPop">
+                <div class='mobieLogo'>
+                    <div></div>
+                    <h3>Mobie</h3>
+                </div>
+                <div class="userDataForm">
+                    <label>
+                        <span>아이디</span>
+                        <input type="text" id="userId" name="userId" placeholder="example@mobie.com" autocomplete="off">
+                    </label>
+                    <div class="loginSignUpNotice"></div>
+                    <label>
+                        <span>비밀번호</span>
+                        <input type="password" id="userPw" name="userPw" placeholder="Password" autocomplete="off">
+                    </label>
+                    <div class="loginSignUpNotice"></div>
+                    <div class='FindSignUp'>
+                            <span class="signUp">회원가입</span>
+                    </div>
+                    <button class="loginSubmit">로그인</button>
+                </div>
+            </div>
+        </div>
+        <div class="signUpWrap">
+            <div class="signUpBg"></div>
+            <div class="signUpPop">
+                <div class='mobieLogo'>
+                    <div></div>
+                    <h3>Mobie</h3>
+                </div>
+                <div class="userDataForm">
+                    <label>
+                        <span>아이디</span>
+                        <input type="text" id="createUserId" name="createUserId" placeholder="example@mobie.com" autocomplete="off">
+                    </label>
+                    <div class="loginSignUpNotice"></div>
+                    <label>
+                        <span>비밀번호</span>
+                        <input type="password" id="createUserPw" name="createUserPw" placeholder="Password" autocomplete="off">
+                    </label>
+                    <div class="loginSignUpNotice"></div>
+                    <label>
+                        <span>이름</span>
+                        <input type="text" id="createUserName" name="createUserName" placeholder="Your Name" autocomplete="off">
+                    </label>
+                    <div class="loginSignUpNotice"></div>
+                    <label>
+                        <span>휴대전화</span>
+                        <input type="text" id="createUserPhoneNum" name="createUserPhoneNum" placeholder="Phone Number" autocomplete="off">
+                    </label>
+                    <div class="loginSignUpNotice"></div>
+                    <button class="signUpSubmit">회원가입</button>
+                </div>
+            </div>
+        </div>
+        <div id="contents">
+            <div class="resMvWrap">
+                <h2>예매내역</h2>
+                <ul></ul>
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="footerWrap">
+                <div class="mobieInfo">
+                    <div class='mobieLogo'>
+                        <div></div>
+                        <h3>Mobie</h3>
+                    </div>
+                    <address>서울특별식 강동구 천호대로 995</address>
+                    <span class="ceo">대표 정임김</span>
+                    <span class="companyNum">사업자번호 202009181641</span>
+                    <span class="contactEmail">메일 jungimkim@gmail.com</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="./js/cookie.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/signUpLogin.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/myRes.js"></script>
+</body>
+</html>

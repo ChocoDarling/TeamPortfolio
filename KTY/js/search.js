@@ -9,7 +9,9 @@ function createSearchListFunction(movie){
     const li = document.createElement('li');
     const div = document.createElement('div');
 
-    a.href = `./movie.html#${movie[i].id}`;
+    a.href = `../IBR/mvInfo.html#${movie[i].id}`;
+    a.addEventListener('click',()=>removeSlide());
+
     li.className = 'searchList';
     div.innerHTML = `${movie[i].mvTitle}`;
     

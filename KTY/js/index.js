@@ -1,4 +1,5 @@
 createLatestPopularMovies();
 createLatestMovies();
 createSameGenreMovies('액션');
-createSameGenreMovies('SF');
+createSameGenreMovies('드라마');
+createSameGenreMovies('코미디');

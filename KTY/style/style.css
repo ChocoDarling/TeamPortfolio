@@ -148,7 +148,7 @@ a{
   height: calc(100vh - 140px);
 }
 
-.menuList li{
+.menuList a{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -346,7 +346,7 @@ a{
 }
 
 #footer{
-  padding: 40px 10px;
+  padding: 0 10px 40px;
 }
 
 .mobieLogo{
