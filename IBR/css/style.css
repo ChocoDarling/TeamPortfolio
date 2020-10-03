@@ -1,0 +1,502 @@
+*{margin: 0; padding: 0; border:0; box-sizing: border-box;}
+ul,li{list-style: none;}
+a{text-decoration: none; color:#000;}
+
+body{
+    max-width: 767px;
+    overflow: hidden;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+#MovieReservation_wrap{
+    width: 100%;
+}
+#wrap{
+  display: flex;
+  flex-flow: column;
+}
+
+#header{
+  display: flex;
+  width: 100%;
+  height: 60px;
+  padding: 0 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menuBtn{
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.menuBtn div{
+  width: 20px;
+  height: 2px;
+  background-color: #333;
+  margin: 6px 0;
+}
+
+.logo{
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.searchBtn{
+  background: url(../../KTY/images/searchIcon.png) no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: cover; 
+  cursor: pointer;
+}
+
+.slideBg{
+  visibility: hidden;
+  position: fixed;
+  opacity: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-in-out;
+  z-index: 1;
+} 
+
+.menuSlide{
+  flex-flow: column;
+  position: fixed;
+  transform: translateX(-100%);
+  max-width:335px;
+  width: 100%; 
+  height: 100vh;
+  background-color: rgb(244,244,244);
+  transition: 0.45s ease-in-out;
+  z-index: 2;
+}
+
+
+.menuCloseBtn{
+  margin-left: auto;
+  background: url(../../KTY/images/closeIcon.png) no-repeat;
+  background-size: cover; 
+  width: 45px;
+  height: 45px;
+  margin: 10px 10px 0 auto;
+  cursor: pointer;
+}
+
+.menuLoginWrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0 35px;
+}
+
+.menuLoginText{
+  display: flex;
+  height: 50px;
+  margin-left: 25px;
+  flex-flow: column;
+  justify-content: space-between; 
+}
+.menuLoginText>h3{
+  padding-top: 3px;
+}
+.menuLoginText>h2{
+  padding-top: 3px;
+  font-size: 1.3rem;
+  color: #a0a0a0;
+  margin: auto 0;
+}
+
+.menuLoginText>div{
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: #a5a5a5;
+  margin: 2px 2px 0 0;
+}
+.menuLoginText>div>span{
+  cursor: pointer;
+  
+}
+.logout{
+  display: none;
+  margin-left: auto;
+}
+
+.mobieCircle{
+  width: 60px;
+  height: 60px;
+  margin: 5px 20px;
+  background-color: darkkhaki; 
+  border-radius: 50%; 
+  color: white;
+  text-align: center;
+  line-height: 57px;
+  font-weight: bold;
+}
+
+.menuList{
+  background-color: #eee;
+  height: calc(100vh - 140px);
+}
+
+.menuList a{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  font-size: 1rem;
+  margin: 10px 20px 10px 25px;
+}
+
+.directionIcon{
+  display: inline-block;
+  background: url(../../KTY/images/directionIcon.webp) no-repeat;
+  background-size: cover; 
+  width: 25px;
+  height: 25px;
+}
+
+.searchSlide{
+  flex-flow: column;
+  position: fixed;
+  transform: translateX(100%);
+  right: 0;
+  max-width: 600px;
+  width: 80%; 
+  height: 100vh;
+  background-color: #eee;
+  transition: 0.5s ease-in-out;
+  z-index: 2;
+}
+
+.searchWrap{
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background-color: rgb(244,244,244);
+}
+
+.searchCloseBtn{
+  display: inline-block;
+  height: 40px;
+  padding-right: 10px;
+}
+
+.searchCloseBtn .directionIcon{
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+.searchBox{
+  width: calc(100% - 50px);
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput{
+  border-radius: 20px;  
+  height: 32px;
+  width: 100%;
+  border:2px solid rgb(118, 118, 118);
+  background: url(../../KTY/images/searchInputIcon.png) no-repeat 8px 4px;
+  background-size: 20px 20px;
+  padding: 0 10px 0 40px;
+}
+
+.searchInput:focus{
+  outline:none;
+}
+
+.searchList{
+  display: flex;
+  align-items: center;
+  height: 60px;
+  border-bottom: 1px solid #e3e3e3;
+  padding-left: 20px;
+  color: #a0a0a0;
+}
+
+.loginBg{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background : rgba(0, 0, 0, 0.5);
+}
+
+.loginPop{
+  display: none;
+  position: fixed;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  top: calc(50% - 160px);
+  left: calc(50% - 150px);
+  width: 300px;
+  height: 320px;
+  z-index: 4;
+  background : white;
+}
+
+.FindSignUp{
+  margin: 0 25px 0 auto  ;
+  color: #a5a5a5;
+  padding-top: 10px;
+  font-size: 0.7rem;
+}
+
+.loginSubmit{
+  width: 70px;
+  margin: 20px auto;
+}
+
+.signUpBg{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background : rgba(0, 0, 0, 0.5);
+}
+
+.signUpPop{
+  display: none;
+  position: fixed;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  top: calc(50% - 215px);
+  left: calc(50% - 150px);
+  width: 300px;
+  height: 430px;
+  z-index: 4;
+  background : white;
+}
+
+.signUpSubmit{
+  width: 80px;
+  margin: 40px auto;
+}
+
+.userDataForm{
+  display: flex;
+  flex-flow: column;
+}
+.userDataForm label{
+  display: flex;
+  padding: 15px 0;
+  width: 260px;
+  justify-content: center;
+}
+
+.userDataForm label:last-of-type{
+  padding-bottom: 0;
+}
+
+.userDataForm label span{
+  display: inline-block;
+  width: 80px;
+}
+
+.userDataForm label input{
+  display: inline-block;
+  width: 135px;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+.userDataForm label input:focus{
+  outline:none;
+}
+
+.loginSignUpNotice{
+  font-size: 0.7rem;
+  color: red;
+  margin-left: 102px;
+}
+
+.userDataForm button{
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  height: 40px;
+  display: block;
+  cursor: pointer;
+}
+  #top_section{
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    position: fixed;
+    /* z-index: 1; */
+
+}
+.top_Reservation{
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    position: relative;
+}
+.top_Reservation a{
+    width: 43px;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.top_Reservation a img{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.top_Reservation h3{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    font-weight: 600;
+    font-size: 1.04rem;
+}
+.top_Grid{
+    width: 100%;
+    height: 75px;
+}
+.top_Grid ul{
+    width: 100%;
+    height: 100%;
+}
+.top_Grid ul li{
+    width: 33.333%;
+    height: 100%;
+    float: left;
+    background-color: #333;
+    border-right: 1px solid #494949;
+    position: relative;
+}
+.top_Grid ul li p{
+    color:#fff;
+    position: absolute;
+    left:50%;
+    top:27%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    letter-spacing: 1;
+} 
+.top_Grid ul li.sectionCheck{
+    background-color: #000;
+}
+.date span{
+    padding-right: 22px;
+    color: #000;
+    float: left;
+}
+.top_Procedure{
+    width: 100%;
+    height: 48px;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    position: relative;
+}
+.top_Procedure p{
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  position: absolute;
+  top: 53%;
+  left: 5%;
+  transform: translateY(-50%);
+}
+.MV_Common{
+    margin-top: 135px;
+    width: 100%;
+}
+.txtCm{
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1.2rem;
+    letter-spacing: -0.02rem;
+    color: #555;
+    padding-bottom: 3px;
+}
+.txtCm:nth-child(1){
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+  color: #000;
+}
+
+#box{
+    height: calc(100vh - 195px);
+    overflow-y: auto;
+  }
+
+.top_Grid ul li a span{
+    color:#fff;
+    font-weight: 700;
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.ulCommon{
+    height: 100%;
+    float: left;
+    position: relative;
+}
+.NormalAreaLi{
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    letter-spacing: -1;
+    white-space : normal;
+    font-weight: 600;
+    border-bottom: 1px solid #EBEBEB;
+}
+.AreaSpot{
+    width: 100%;
+    height: 100%;
+    background-color: #F5F5F5;
+    overflow-y: scroll;
+}
+.AreaSpot li{
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 1px solid #EBEBEB;
+} 
+.displayBlock{display: block;}
+.Area_checked{background-color: #F5F5F5;}
+.dateMonth{
+    width: 100%;
+    height: 42%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-left: 4%;
+    padding-top: 2%;
+    color : #555;
+}
+.dateDay{
+    width: 100%;
+    height: 58%;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 600;
+    line-height: 2;
+}
