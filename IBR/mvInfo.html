@@ -1,0 +1,214 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화정보</title>
+    <link rel="stylesheet" href="./css/style02.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <script src="../JKH/mysql/basicDB.js"></script>
+</head>
+<body>
+    <div id="MovieInfo_wrap">
+        <div class="mvView btn"><p>영화보기</p></div>
+        <div class="mvReservation btn" style="right: 0;"><p>예매하기</p></div>
+        <div id="wrap">
+            <header id="header">
+                <div class="menuBtn">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="logo">
+                    <a href="http://rudekrudgns.cafe24.com/KTY/index.html">Mobie</a>
+                </div>
+                <div class="searchBtn"></div>
+            </header>
+            <div class="slideBg"></div>
+            <div class="menuSlide">
+                <div class="menuCloseBtn"></div>
+                <div class="menuLoginWrap">
+                    <div class="menuLoginText">
+                        <h3>로그인 해주세요</h3>
+                        <div>
+                            <span class="login">로그인 ></span>
+                            <span class="signUp">회원가입 ></span>
+                            <span class="logout">로그아웃</span>
+                        </div>
+                    </div>
+                    <div class="mobieCircle">Mobie</div>
+                </div>
+                <ul class="menuList">
+                    <li class="menuHome">
+                        <a href="http://rudekrudgns.cafe24.com/KTY/index.html">
+                            <span>홈</span>
+                            <span class="directionIcon"></span>
+                        </a>   
+                    </li>
+                    <li class="menuMvRes">
+                        <a href="http://rudekrudgns.cafe24.com/IBR/mvRes.html">
+                            <span>영화 예매</span>
+                            <span class="directionIcon"></span>
+                        </a>        
+                    </li>
+                    <li class="menuMyRes">
+                        <a href="http://rudekrudgns.cafe24.com/KTY/myRes.html">
+                            <span>예매 내역</span>
+                            <span class="directionIcon"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="searchSlide">
+                <div class="searchWrap">
+                    <div class="searchCloseBtn">
+                        <div class="directionIcon"></div>
+                    </div>
+                    <div class="searchBox">
+                        <input type="search" class="searchInput" placeholder="검색어를 입력해 주세요">
+                    </div>
+                </div>
+                <div class="searchResultWrap">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+            <div class="loginWrap">
+                <div class="loginBg"></div>
+                <div class="loginPop">
+                    <div class='mobieLogo'>
+                        <div></div>
+                        <h3>Mobie</h3>
+                    </div>
+                    <div class="userDataForm">
+                        <label>
+                            <span>아이디</span>
+                            <input type="text" id="userId" name="userId" placeholder="example@mobie.com" autocomplete="off">
+                        </label>
+                        <div class="loginSignUpNotice"></div>
+                        <label>
+                            <span>비밀번호</span>
+                            <input type="password" id="userPw" name="userPw" placeholder="Password" autocomplete="off">
+                        </label>
+                        <div class="loginSignUpNotice"></div>
+                        <div class='FindSignUp'>
+                                <span class="signUp">회원가입</span>
+                        </div>
+                        <button class="loginSubmit">로그인</button>
+                    </div>
+                </div>
+            </div>
+            <div class="signUpWrap">
+                <div class="signUpBg"></div>
+                <div class="signUpPop">
+                    <div class='mobieLogo'>
+                        <div></div>
+                        <h3>Mobie</h3>
+                    </div>
+                    <div class="userDataForm">
+                        <label>
+                            <span>아이디</span>
+                            <input type="text" id="createUserId" name="createUserId" placeholder="example@mobie.com" autocomplete="off">
+                        </label>
+                        <div class="loginSignUpNotice"></div>
+                        <label>
+                            <span>비밀번호</span>
+                            <input type="password" id="createUserPw" name="createUserPw" placeholder="Password" autocomplete="off">
+                        </label>
+                        <div class="loginSignUpNotice"></div>
+                        <label>
+                            <span>이름</span>
+                            <input type="text" id="createUserName" name="createUserName" placeholder="Your Name" autocomplete="off">
+                        </label>
+                        <div class="loginSignUpNotice"></div>
+                        <label>
+                            <span>휴대전화</span>
+                            <input type="text" id="createUserPhoneNum" name="createUserPhoneNum" placeholder="Phone Number" autocomplete="off">
+                        </label>
+                        <div class="loginSignUpNotice"></div>
+                        <button class="signUpSubmit">회원가입</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="top_video">
+            <iframe width="100%" height="100%"></iframe>
+        </div>
+        <div id="Main_info_section">
+            <div class="Info_title">
+                <div class="MV_poster_section"><img style="width: 100%;"></div>
+                <div class="Info_txt_box">
+                    <h3 class="MV_title">Title</h3>
+                    <div style="width: 20%; float: left;">
+                        <span>개봉</span>
+                        <span>장르</span>
+                        <span>등급</span>
+                    </div>
+                    <div class="db_info" style="width: 80%; float: left;">
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <div>
+                        <span class="MV_genre"></span>
+                        <span class="MV_date"></span>
+                    </div>  
+                </div>
+            </div>
+            <div class="Info_story">
+                <p></p>
+            </div>
+            <div class="story_button">
+                <button type="button" class="btn_more b1">
+                    <p>더보기</p>
+                    <img src="./img/down_arrow_icon.png">
+                </button>
+                <button type="button" class="btn_more b2">
+                    <p>닫기</p>
+                    <img src="./img/up_arrow_icon.png">
+                </button>
+            </div>
+            <div class="Info_statistics">
+                <ul>
+                    <li>
+                        <span>관람객 평점</span>
+                        <p class="GRADE"></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="Info_tab">
+                <div class="TAB">
+                    <ul>
+                        <li class="infoaddTab_Button Tabcheck"><a>영화정보</a></li>
+                        <li class="reviewTab_Button "><a>실관람평</a></li>
+                    </ul>
+                </div>
+                <div class="Tab_info_section">
+                    <div class="infoAdd infoCM view">
+                        <h3>출연</h3>
+                        <div class="mv_Actor">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div id="review" class="infoCM"></div>
+                </div>
+            </div>
+            <div class="Slide_section">
+                <div class="mv_video_section">
+                    <h3>트레일러</h3>
+                    <div class="mv_video"></div>
+                </div>
+                <div class="mv_photo_section">
+                    <h3>포스터 /스틸컷</h3>
+                    <div class="mv_photo"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../KTY/js/main.js"></script>
+    <script src="../JKH/comment/js_1.js"></script>
+    <script src="./js/js_02.js"></script>
+    <script src="../KTY/js/cookie.js"></script>
+    <script src="../KTY/js/search.js"></script>
+</body>
+</html>
